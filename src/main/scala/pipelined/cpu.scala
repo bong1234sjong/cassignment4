@@ -193,7 +193,7 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Set the memory control signals
   id_ex.mcontrol.memwrite := control.io.memwrite
   id_ex.mcontrol.memread := control.io.memread
-  id_ex.mcontrol.taken := branchCtrl.io.taken
+  id_ex.mcontrol.taken := DontCare
 
   // Set the writeback control signals
   id_ex.wbcontrol.toreg := control.io.toreg
@@ -211,25 +211,51 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Set the input to the forwarding unit from this stage (SKIP FOR PART I)
 
   // Connect the ALU control wires (line 45 of single-cycle/cpu.scala)
+  aluControl.io.add       := control.io.add
+  aluControl.io.immediate := control.io.immediate
+  aluControl.io.funct7    := id_ex.funct7
+  aluControl.io.funct3    := id_ex.funct3
 
   // Insert the forward inputx mux here (SKIP FOR PART I)
 
   // Insert the ALU inpux mux here (line 59 of single-cycle/cpu.scala)
+  val alu_inputx = Wire(UInt())
+  alu_inputx := DontCare
+  switch(control.io.alusrc1) {
+    is(0.U) { alu_inputx := id_ex.readdata1 }
+    is(1.U) { alu_inputx := 0.U }
+    is(2.U) { alu_inputx := id_ex.pc }
+  }
 
   // Insert forward inputy mux here (SKIP FOR PART I)
 
   // Input y mux (line 66 of single-cycle/cpu.scala)
+  val alu_inputy = Mux(id_ex.excontrol.immediate, id_ex.sextimm, id_ex.readdata2)
+  alu.io.inputx := alu_inputx
+  alu.io.inputy := alu_inputy
 
   // Connect the branch control wire (line 54 of single-cycle/cpu.scala)
+  branchCtrl.io.branch := id_ex.excontrol.branch
+  branchCtrl.io.funct3 := id_ex.funct3
+  branchCtrl.io.inputx := id_ex.readdata1
+  branchCtrl.io.inputy := id_ex.readdata2
 
   // Set the ALU operation
   alu.io.operation := aluControl.io.operation
 
   // Connect the branchAdd unit
 
+
   // Set the EX/MEM register values
 
   // Calculate whether which PC we should use and set the taken flag (line 92 in single-cycle/cpu.scala)
+  when (branchCtrl.io.taken || id_ex.excontrol.jump === 2.U) {
+    next_pc := branchAdd.io.result
+  } .elsewhen (id_ex.excontrol.jump === 3.U) {
+    next_pc := alu.io.result & Cat(Fill(31, 1.U), 0.U)
+  } .otherwise {
+    next_pc := pcPlusFour.io.result
+  }
 
   printf(p"EX/MEM: $ex_mem\n")
 
