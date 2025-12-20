@@ -40,6 +40,20 @@ class ForwardingUnit extends Module {
   io.forwardB := 0.U
 
   // set forward A
+  when (io.exmemrw && io.exmemrd === io.rs1 && io.exmemrd =/= 0.U) {
+    io.forwardA := 1.U
+  } .elsewhen (io.memwbrw && (io.memwbrd === io.rs1) && (io.memwbrd =/= 0.U)) {
+    io.forwardA := 2.U
+  } .otherwise {
+    io.forwardA := 0.U
+  }
 
   // set forward B
+  when (io.exmemrw && io.exmemrd === io.rs2 && io.exmemrd =/= 0.U) {
+    io.forwardB := 1.U
+  } .elsewhen (io.memwbrw && (io.memwbrd === io.rs2) && (io.memwbrd =/= 0.U)) {
+    io.forwardB := 2.U
+  } .otherwise {
+    io.forwardB := 0.U
+  }
 }
