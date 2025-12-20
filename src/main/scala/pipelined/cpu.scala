@@ -35,13 +35,13 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Control signals used in MEM stage
   class MControl extends Bundle {
     val memwrite = Bool()
-    val memread = Bool()
-    val jump    = UInt(2.W)
+    val memread  = Bool()
+    val taken    = Bool()
   }
 
   // Control signals used in WB stage
   class WBControl extends Bundle {
-    val toreg = UInt(2.W)
+    val toreg    = UInt(2.W)
     val regwrite = Bool()
   }
 
@@ -57,23 +57,30 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
     val readreg2    = UInt(5.W)
     val readdata1   = UInt(32.W)
     val readdata2   = UInt(32.W)
-    val excontrol = new EXControl
-    val mcontrol  = new MControl
-    val wbcontrol = new WBControl
+    val excontrol   = new EXControl
+    val mcontrol    = new MControl
+    val wbcontrol   = new WBControl
   }
 
   // Everything in the register between EX and MEM stages
   class EXMEMBundle extends Bundle {
+    val writedata   = UInt(32.W)
+    val targetPc    = UInt(32.W)
+    val pcplusfour  = UInt(32.W)
+    val aluResult   = UInt(32.W)
     val instruction = UInt(32.W)
     val funct3      = UInt(3.W)
-    val mcontrol  = new MControl
-    val wbcontrol = new WBControl
+    val mcontrol    = new MControl
+    val wbcontrol   = new WBControl
   }
 
   // Everything in the register between MEM and WB stages
   class MEMWBBundle extends Bundle {
-    
-    val wbcontrol = new WBControl
+    val pcplusfour   = UInt(32.W)
+    val aluResult    = UInt(32.W)
+    val memReadData  = UInt(32.W)
+    val instruction  = UInt(32.W)
+    val wbcontrol    = new WBControl
   }
 
   // All of the structures required
@@ -164,13 +171,33 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Send the instruction to the immediate generator
   immGen.io.instruction := if_id.instruction
 
-  // FIll the id_ex register
+  // Fill the id_ex register
+  id_ex.instruction := if_id.instruction
+  id_ex.pc := if_id.pc
+  id_ex.pcplusfour := if_id.pcplusfour
+  id_ex.sextimm := immGen.io.sextImm
+  id_ex.funct7 := if_id.instruction(31,25)
+  id_ex.funct3 := if_id.instruction(14,12)
+  id_ex.readreg1 := rs1
+  id_ex.readreg2 := rs2
+  id_ex.readdata1 := registers.io.readdata1
+  id_ex.readdata2 := registers.io.readdata2
 
   // Set the execution control signals
+  id_ex.excontrol.add := control.io.add
+  id_ex.excontrol.immediate := control.io.immediate
+  id_ex.excontrol.alusrc1 := control.io.alusrc1
+  id_ex.excontrol.branch := control.io.branch
+  id_ex.excontrol.jump := control.io.jump
 
   // Set the memory control signals
+  id_ex.mcontrol.memwrite := control.io.memwrite
+  id_ex.mcontrol.memread := control.io.memread
+  id_ex.mcontrol.taken := branchCtrl.io.taken
 
   // Set the writeback control signals
+  id_ex.wbcontrol.toreg := control.io.toreg
+  id_ex.wbcontrol.regwrite := control.io.regwrite
 
   printf("DASM(%x)\n", if_id.instruction)
   printf(p"ID/EX: $id_ex\n")
