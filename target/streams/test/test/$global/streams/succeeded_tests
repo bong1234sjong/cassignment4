@@ -1,0 +1,27 @@
+#Successful Tests
+#Sat Dec 20 04:42:26 GMT 2025
+dinocpu.SingleCycleCPUTester=1766205743373
+dinocpu.RegisterFileTester=1766205732072
+dinocpu.MemoryTester=1766205725698
+dinocpu.SingleCycleApplicationsTesterLab2=1766205722701
+dinocpu.ALUControlTester=1766205723537
+dinocpu.SingleCycleRTypeTesterLab1=1766205732813
+dinocpu.SingleCycleUTypeTesterLab2=1766205722726
+dinocpu.SingleCycleITypeTesterLab2=1766205729062
+dinocpu.SingleCycleRTypeTesterLab2=1766205736691
+dinocpu.BranchControlTester=1766205728248
+dinocpu.SingleCycleLoadStoreTesterLab2=1766205726039
+dinocpu.Lab2Grader=1766205745162
+dinocpu.ALUTester=1766205728669
+dinocpu.BranchControlTesterLab2=1766205732993
+dinocpu.SingleCycleBranchTesterLab2=1766205733820
+dinocpu.SingleCycleStoreTesterLab2=1766205728109
+dinocpu.SingleCycleJALTesterLab2=1766205726389
+dinocpu.ControlTester=1766205732967
+dinocpu.ALUControlTesterLab1=1766205718182
+dinocpu.SingleCycleAddTesterLab1=1766205723321
+dinocpu.SingleCycleJALRTesterLab2=1766205733496
+dinocpu.SingleCycleLoadTesterLab2=1766205732720
+dinocpu.ControlTesterLab2=1766205726675
+dinocpu.SingleCycleMultiCycleTesterLab1=1766205729936
+dinocpu.Lab1Grader=1766205731672

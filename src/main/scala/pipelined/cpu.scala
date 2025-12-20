@@ -34,32 +34,45 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
 
   // Control signals used in MEM stage
   class MControl extends Bundle {
-
+    val memwrite = Bool()
+    val memread = Bool()
+    val jump    = UInt(2.W)
   }
 
-  // Control signals used in EB stage
+  // Control signals used in WB stage
   class WBControl extends Bundle {
-
+    val toreg = UInt(2.W)
+    val regwrite = Bool()
   }
 
   // Everything in the register between ID and EX stages
   class IDEXBundle extends Bundle {
-
+    val instruction = UInt(32.W)
+    val pc          = UInt(32.W)
+    val pcplusfour  = UInt(32.W)
+    val sextimm     = UInt(32.W)
+    val funct7      = UInt(7.W)
+    val funct3      = UInt(3.W)
+    val readreg1    = UInt(5.W)
+    val readreg2    = UInt(5.W)
+    val readdata1   = UInt(32.W)
+    val readdata2   = UInt(32.W)
     val excontrol = new EXControl
     val mcontrol  = new MControl
     val wbcontrol = new WBControl
   }
 
-  // Everything in the register between ID and EX stages
+  // Everything in the register between EX and MEM stages
   class EXMEMBundle extends Bundle {
-
+    val instruction = UInt(32.W)
+    val funct3      = UInt(3.W)
     val mcontrol  = new MControl
     val wbcontrol = new WBControl
   }
 
-  // Everything in the register between ID and EX stages
+  // Everything in the register between MEM and WB stages
   class MEMWBBundle extends Bundle {
-
+    
     val wbcontrol = new WBControl
   }
 
@@ -138,6 +151,8 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   val rs2 = if_id.instruction(24,20)
 
   // Send input from this stage to hazard detection unit
+  hazard.io.rs1 := rs1
+  hazard.io.rs2 := rs2
 
   // Send opcode to control
   control.io.opcode := if_id.instruction(6,0)

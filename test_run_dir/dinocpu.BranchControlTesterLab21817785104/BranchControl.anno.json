@@ -1,0 +1,34 @@
+[
+  {
+    "class":"firrtl.transforms.CombinationalPath",
+    "sink":"~BranchControl|BranchControl>io_taken",
+    "sources":[
+      "~BranchControl|BranchControl>io_branch",
+      "~BranchControl|BranchControl>io_funct3",
+      "~BranchControl|BranchControl>io_inputx",
+      "~BranchControl|BranchControl>io_inputy"
+    ]
+  },
+  {
+    "class":"logger.LogLevelAnnotation",
+    "globalLogLevel":{
+      
+    }
+  },
+  {
+    "class":"firrtl.options.TargetDirAnnotation",
+    "directory":"test_run_dir/dinocpu.BranchControlTesterLab21817785104"
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.LowFirrtlEmitter"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"test_run_dir/dinocpu.BranchControlTesterLab21817785104"
+  },
+  {
+    "class":"firrtl.options.OutputAnnotationFileAnnotation",
+    "file":"BranchControl"
+  }
+]
