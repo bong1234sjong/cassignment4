@@ -211,8 +211,8 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Set the input to the forwarding unit from this stage (SKIP FOR PART I)
 
   // Connect the ALU control wires (line 45 of single-cycle/cpu.scala)
-  aluControl.io.add       := control.io.add
-  aluControl.io.immediate := control.io.immediate
+  aluControl.io.add       := id_ex.excontrol.add
+  aluControl.io.immediate := id_ex.excontrol.immediate
   aluControl.io.funct7    := id_ex.funct7
   aluControl.io.funct3    := id_ex.funct3
 
@@ -221,7 +221,7 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Insert the ALU inpux mux here (line 59 of single-cycle/cpu.scala)
   val alu_inputx = Wire(UInt())
   alu_inputx := DontCare
-  switch(control.io.alusrc1) {
+  switch(id_ex.excontrol.alusrc1) {
     is(0.U) { alu_inputx := id_ex.readdata1 }
     is(1.U) { alu_inputx := 0.U }
     is(2.U) { alu_inputx := id_ex.pc }
@@ -244,17 +244,31 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   alu.io.operation := aluControl.io.operation
 
   // Connect the branchAdd unit
-
+  branchAdd.io.inputx := id_ex.pc
+  branchAdd.io.inputy := id_ex.sextimm
 
   // Set the EX/MEM register values
+  ex_mem.writedata := id_ex.readdata2
+  ex_mem.targetPc  := DontCare
+  ex_mem.pcplusfour := id_ex.pcplusfour
+  ex_mem.aluResult := alu.io.result
+  ex_mem.instruction := id_ex.instruction
+  ex_mem.funct3 := id_ex.funct3
+
+  ex_mem.mcontrol.memwrite := id_ex.mcontrol.memwrite
+  ex_mem.mcontrol.memread := id_ex.mcontrol.memread
+  ex_mem.mcontrol.taken := branchCtrl.io.taken
+
+  ex_mem.wbcontrol.toreg := id_ex.wbcontrol.toreg
+  ex_mem.wbcontrol.regwrite := id_ex.wbcontrol.regwrite
 
   // Calculate whether which PC we should use and set the taken flag (line 92 in single-cycle/cpu.scala)
   when (branchCtrl.io.taken || id_ex.excontrol.jump === 2.U) {
-    next_pc := branchAdd.io.result
+    ex_mem.targetPc := branchAdd.io.result
   } .elsewhen (id_ex.excontrol.jump === 3.U) {
-    next_pc := alu.io.result & Cat(Fill(31, 1.U), 0.U)
+    ex_mem.targetPc := alu.io.result & Cat(Fill(31, 1.U), 0.U)
   } .otherwise {
-    next_pc := pcPlusFour.io.result
+    ex_mem.targetPc := id_ex.pcplusfour
   }
 
   printf(p"EX/MEM: $ex_mem\n")
@@ -264,14 +278,28 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   /////////////////////////////////////////////////////////////////////////////
 
   // Set data memory IO (line 71 of single-cycle/cpu.scala)
+  io.dmem.address   := ex_mem.aluResult
+  io.dmem.writedata := ex_mem.writedata
+  io.dmem.memread   := ex_mem.mcontrol.memread
+  io.dmem.memwrite  := ex_mem.mcontrol.memwrite
+  io.dmem.maskmode  := ex_mem.funct3(1,0)
+  io.dmem.sext      := ~ex_mem.funct3(2)
 
   // Send next_pc back to the fetch stage
+  next_pc := ex_mem.targetPc
 
   // Send input signals to the hazard detection unit (SKIP FOR PART I)
 
   // Send input signals to the forwarding unit (SKIP FOR PART I)
 
   // Wire the MEM/WB register
+  mem_wb.pcplusfour := ex_mem.pcplusfour
+  mem_wb.aluResult := ex_mem.aluResult
+  mem_wb.memReadData := io.dmem.readdata
+  mem_wb.instruction := ex_mem.instruction
+
+  mem_wb.wbcontrol.toreg := ex_mem.wbcontrol.toreg
+  mem_wb.wbcontrol.regwrite := ex_mem.wbcontrol.regwrite
 
   printf(p"MEM/WB: $mem_wb\n")
 
@@ -280,8 +308,19 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   /////////////////////////////////////////////////////////////////////////////
 
   // Set the writeback data mux (line 78 single-cycle/cpu.scala)
+  val write_data = Wire(UInt())
+  when (mem_wb.wbcontrol.toreg === 1.U) {
+    write_data := mem_wb.memReadData
+  } .elsewhen (mem_wb.wbcontrol.toreg === 2.U) {
+    write_data := mem_wb.pcplusfour
+  } .otherwise {
+    write_data := mem_wb.aluResult
+  }
 
   // Write the data to the register file
+  registers.io.wen := mem_wb.wbcontrol.regwrite
+  registers.io.writereg := mem_wb.instruction(11,7)
+  registers.io.writedata := write_data
 
   // Set the input signals for the forwarding unit (SKIP FOR PART I)
 
