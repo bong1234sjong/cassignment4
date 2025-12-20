@@ -20,7 +20,7 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.DualPortedMemory.memory",
-    "fileName":"./divider.hex",
+    "fileName":"./sh.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"memory"
   },

@@ -1,0 +1,11 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mLab2Grader:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyItype[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyLoads[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyRtype[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyStore[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyUtype[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyJal[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyApps[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyJalr[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyMemInsts[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- verifyBranches[0m[0m

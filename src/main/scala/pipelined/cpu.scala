@@ -251,6 +251,7 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   aluControl.io.funct3    := id_ex.funct3
 
   // Insert the forward inputx mux here (SKIP FOR PART I)
+
   val fA = Wire(UInt())
   when (forwarding.io.forwardA === 1.U) {
     fA := ex_mem.aluResult
@@ -287,8 +288,8 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   // Connect the branch control wire (line 54 of single-cycle/cpu.scala)
   branchCtrl.io.branch := id_ex.excontrol.branch
   branchCtrl.io.funct3 := id_ex.funct3
-  branchCtrl.io.inputx := id_ex.readdata1
-  branchCtrl.io.inputy := id_ex.readdata2
+  branchCtrl.io.inputx := fA
+  branchCtrl.io.inputy := fB
 
   // Set the ALU operation
   alu.io.operation := aluControl.io.operation
@@ -307,7 +308,7 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
     ex_mem.targetPc := 0.U
   } .otherwise {
     // Set the EX/MEM register values
-    ex_mem.writedata := id_ex.readdata2
+    ex_mem.writedata := fB
     ex_mem.targetPc  := DontCare
     ex_mem.pcplusfour := id_ex.pcplusfour
     ex_mem.aluResult := alu.io.result

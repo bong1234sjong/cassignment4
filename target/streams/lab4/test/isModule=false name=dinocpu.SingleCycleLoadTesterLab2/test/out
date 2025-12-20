@@ -1,0 +1,5 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mSingleCycleLoadTesterLab2:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSingle Cycle CPU[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should run load instruction test lw1[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mSingle Cycle CPU[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should run load instruction test lwfwd[0m[0m

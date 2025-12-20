@@ -25,3 +25,16 @@ Lab4 / testOnly dinocpu.BranchTesterLab4
 Lab4 / testOnly dinocpu.JumpTesterLab4
 Lab4 / testOnly dinocpu.MemoryMultiCycleTesterLab4
 Lab4 / testOnly dinocpu.ApplicationsTesterLab4
+Lab4 / testOnly dinocpu.ALUControlTester
+Lab4 / testOnly dinocpu.ALUControlTesterLab1
+Lab4 / testOnly dinocpu.ALUTester
+Lab4 / testOnly dinocpu.BranchControlTester
+Lab4 / testOnly dinocpu.ControlTesterLab2
+Lab4 / testOnly dinocpu.Lab1Grader
+Lab4 / testOnly dinocpu.Lab2Grader
+Lab4 / testOnly dinocpu.ApplicationsTesterLab4
+Lab4 / runMain dinocpu.singlestep fibonacci pipelined
+Lab4 / testOnly dinocpu.ApplicationsTesterLab4
+Lab4 / test
+Lab4 / testOnly dinocpu.SingleCycleRTypeTesterLab1
+Lab4 / test

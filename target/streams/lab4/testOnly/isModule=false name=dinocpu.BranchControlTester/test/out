@@ -1,0 +1,5 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mBranchControlTester:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mBranchControl[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should correctly check when branching for each opcode[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mBranchControl[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should should never branch[0m[0m

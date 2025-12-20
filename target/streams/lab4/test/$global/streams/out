@@ -1,0 +1,81 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.BranchControlTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleLoadTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ITypeMultiCycleTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleBranchTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleRTypeTesterLab1, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ALUControlTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.PipelinedCPUTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ALUTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.Lab2Grader, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.JumpTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleITypeTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.RTypeTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleAddTesterLab1, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleJALTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleRTypeTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleApplicationsTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleStoreTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleUTypeTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ApplicationsTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.Lab1Grader, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.BranchTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ITypeTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.MemoryTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.RTypeMultiCycleTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.UTypeTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ControlTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleCPUTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ControlTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.BranchControlTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.MemoryTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleLoadStoreTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.ALUControlTesterLab1, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleMultiCycleTesterLab1, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.SingleCycleJALRTesterLab2, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.RegisterFileTester, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(dinocpu.MemoryMultiCycleTesterLab4, org.scalatest.tools.Framework$$anon$1@2069dc32, false, [SuiteSelector])[0m
+[0m[[0m[0mdebug[0m] [0m[0mSummary for ScalaCheck not available.[0m
+[0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 30 seconds, 966 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 344[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 36, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 344, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 344, Failed 0, Errors 0, Passed 344[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ITypeMultiCycleTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.MemoryTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.BranchTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleBranchTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ControlTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.BranchControlTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleCPUTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleApplicationsTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleRTypeTesterLab1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.RTypeTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleJALRTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleAddTesterLab1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.UTypeTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ITypeTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleStoreTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleUTypeTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ALUTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ControlTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.MemoryMultiCycleTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.Lab1Grader[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.RegisterFileTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.MemoryTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleJALTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.RTypeMultiCycleTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ALUControlTesterLab1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ALUControlTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.BranchControlTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleLoadStoreTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.JumpTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.PipelinedCPUTester[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.Lab2Grader[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.ApplicationsTesterLab4[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleLoadTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleRTypeTesterLab2[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleMultiCycleTesterLab1[0m
+[0m[[0m[0mdebug[0m] [0m[0m	dinocpu.SingleCycleITypeTesterLab2[0m
