@@ -308,7 +308,6 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   /////////////////////////////////////////////////////////////////////////////
 
   // Set the writeback data mux (line 78 single-cycle/cpu.scala)
-  val write_data = Wire(UInt())
   when (mem_wb.wbcontrol.toreg === 1.U) {
     write_data := mem_wb.memReadData
   } .elsewhen (mem_wb.wbcontrol.toreg === 2.U) {
@@ -318,8 +317,8 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   }
 
   // Write the data to the register file
-  registers.io.wen := mem_wb.wbcontrol.regwrite
-  registers.io.writereg := mem_wb.instruction(11,7)
+  registers.io.writereg  := mem_wb.instruction(11,7)
+  registers.io.wen       := mem_wb.wbcontrol.regwrite && (registers.io.writereg =/= 0.U)
   registers.io.writedata := write_data
 
   // Set the input signals for the forwarding unit (SKIP FOR PART I)

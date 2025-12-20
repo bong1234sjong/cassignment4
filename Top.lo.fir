@@ -632,18 +632,18 @@ circuit Top :
     output io_dmem_sext : UInt<1>
     input io_dmem_readdata : UInt<32>
   
-    inst control of Control @[cpu.scala 79:26]
-    inst branchCtrl of BranchControl @[cpu.scala 80:26]
-    inst registers of RegisterFile @[cpu.scala 81:26]
-    inst aluControl of ALUControl @[cpu.scala 82:26]
-    inst alu of ALU @[cpu.scala 83:26]
-    inst immGen of ImmediateGenerator @[cpu.scala 84:26]
-    inst pcPlusFour of Adder @[cpu.scala 85:26]
-    inst branchAdd of Adder @[cpu.scala 86:26]
-    inst forwarding of ForwardingUnit @[cpu.scala 87:26]
-    inst hazard of HazardUnit @[cpu.scala 88:26]
+    inst control of Control @[cpu.scala 88:26]
+    inst branchCtrl of BranchControl @[cpu.scala 89:26]
+    inst registers of RegisterFile @[cpu.scala 90:26]
+    inst aluControl of ALUControl @[cpu.scala 91:26]
+    inst alu of ALU @[cpu.scala 92:26]
+    inst immGen of ImmediateGenerator @[cpu.scala 93:26]
+    inst pcPlusFour of Adder @[cpu.scala 94:26]
+    inst branchAdd of Adder @[cpu.scala 95:26]
+    inst forwarding of ForwardingUnit @[cpu.scala 96:26]
+    inst hazard of HazardUnit @[cpu.scala 97:26]
     reg pc : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), pc) @[cpu.scala 78:27]
+      reset => (UInt<1>("h0"), pc) @[cpu.scala 87:27]
     reg value : UInt<30>, clock with :
       reset => (UInt<1>("h0"), value) @[Counter.scala 29:33]
     node _T_1 = eq(value, UInt<30>("h3fffffff")) @[Counter.scala 38:24]
@@ -652,170 +652,219 @@ circuit Top :
     node _GEN_0 = mux(UInt<1>("h1"), _T_3, value) @[Counter.scala 67:17]
     node _GEN_1 = mux(UInt<1>("h1"), _T_1, UInt<1>("h0")) @[Counter.scala 67:17]
     reg if_id_instruction : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), if_id_instruction) @[cpu.scala 91:27]
+      reset => (UInt<1>("h0"), if_id_instruction) @[cpu.scala 100:27]
     reg if_id_pc : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), if_id_pc) @[cpu.scala 91:27]
+      reset => (UInt<1>("h0"), if_id_pc) @[cpu.scala 100:27]
     reg if_id_pcplusfour : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), if_id_pcplusfour) @[cpu.scala 91:27]
+      reset => (UInt<1>("h0"), if_id_pcplusfour) @[cpu.scala 100:27]
     reg id_ex_instruction : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_instruction) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_instruction) @[cpu.scala 101:27]
     reg id_ex_pc : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_pc) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_pc) @[cpu.scala 101:27]
     reg id_ex_pcplusfour : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_pcplusfour) @[cpu.scala 92:27]
-    reg id_ex_immediate : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_immediate) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_pcplusfour) @[cpu.scala 101:27]
+    reg id_ex_sextimm : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), id_ex_sextimm) @[cpu.scala 101:27]
     reg id_ex_funct7 : UInt<7>, clock with :
-      reset => (UInt<1>("h0"), id_ex_funct7) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_funct7) @[cpu.scala 101:27]
     reg id_ex_funct3 : UInt<3>, clock with :
-      reset => (UInt<1>("h0"), id_ex_funct3) @[cpu.scala 92:27]
-    reg id_ex_rs1 : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_rs1) @[cpu.scala 92:27]
-    reg id_ex_rs2 : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_rs2) @[cpu.scala 92:27]
-    reg id_ex_readreg1 : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_readreg1) @[cpu.scala 92:27]
-    reg id_ex_readreg2 : UInt<32>, clock with :
-      reset => (UInt<1>("h0"), id_ex_readreg2) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_funct3) @[cpu.scala 101:27]
+    reg id_ex_readreg1 : UInt<5>, clock with :
+      reset => (UInt<1>("h0"), id_ex_readreg1) @[cpu.scala 101:27]
+    reg id_ex_readreg2 : UInt<5>, clock with :
+      reset => (UInt<1>("h0"), id_ex_readreg2) @[cpu.scala 101:27]
+    reg id_ex_readdata1 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), id_ex_readdata1) @[cpu.scala 101:27]
+    reg id_ex_readdata2 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), id_ex_readdata2) @[cpu.scala 101:27]
     reg id_ex_excontrol_add : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), id_ex_excontrol_add) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_excontrol_add) @[cpu.scala 101:27]
     reg id_ex_excontrol_immediate : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), id_ex_excontrol_immediate) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_excontrol_immediate) @[cpu.scala 101:27]
     reg id_ex_excontrol_alusrc1 : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), id_ex_excontrol_alusrc1) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_excontrol_alusrc1) @[cpu.scala 101:27]
     reg id_ex_excontrol_branch : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), id_ex_excontrol_branch) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_excontrol_branch) @[cpu.scala 101:27]
     reg id_ex_excontrol_jump : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), id_ex_excontrol_jump) @[cpu.scala 92:27]
-    reg id_ex_mcontrol_toreg : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), id_ex_mcontrol_toreg) @[cpu.scala 92:27]
+      reset => (UInt<1>("h0"), id_ex_excontrol_jump) @[cpu.scala 101:27]
     reg id_ex_mcontrol_memwrite : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), id_ex_mcontrol_memwrite) @[cpu.scala 92:27]
-    reg id_ex_mcontrol_regwrite : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), id_ex_mcontrol_regwrite) @[cpu.scala 92:27]
-    reg id_ex_wbcontrol_immediate : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), id_ex_wbcontrol_immediate) @[cpu.scala 92:27]
-    reg id_ex_wbcontrol_alusrc1 : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), id_ex_wbcontrol_alusrc1) @[cpu.scala 92:27]
-    reg id_ex_wbcontrol_jump : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), id_ex_wbcontrol_jump) @[cpu.scala 92:27]
-    reg ex_mem_mcontrol_toreg : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), ex_mem_mcontrol_toreg) @[cpu.scala 93:27]
+      reset => (UInt<1>("h0"), id_ex_mcontrol_memwrite) @[cpu.scala 101:27]
+    reg id_ex_mcontrol_memread : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), id_ex_mcontrol_memread) @[cpu.scala 101:27]
+    reg id_ex_mcontrol_taken : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), id_ex_mcontrol_taken) @[cpu.scala 101:27]
+    reg id_ex_wbcontrol_toreg : UInt<2>, clock with :
+      reset => (UInt<1>("h0"), id_ex_wbcontrol_toreg) @[cpu.scala 101:27]
+    reg id_ex_wbcontrol_regwrite : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), id_ex_wbcontrol_regwrite) @[cpu.scala 101:27]
+    reg ex_mem_writedata : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_writedata) @[cpu.scala 102:27]
+    reg ex_mem_targetPc : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_targetPc) @[cpu.scala 102:27]
+    reg ex_mem_pcplusfour : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_pcplusfour) @[cpu.scala 102:27]
+    reg ex_mem_aluResult : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_aluResult) @[cpu.scala 102:27]
+    reg ex_mem_instruction : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_instruction) @[cpu.scala 102:27]
+    reg ex_mem_funct3 : UInt<3>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_funct3) @[cpu.scala 102:27]
     reg ex_mem_mcontrol_memwrite : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), ex_mem_mcontrol_memwrite) @[cpu.scala 93:27]
-    reg ex_mem_mcontrol_regwrite : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), ex_mem_mcontrol_regwrite) @[cpu.scala 93:27]
-    reg ex_mem_wbcontrol_immediate : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), ex_mem_wbcontrol_immediate) @[cpu.scala 93:27]
-    reg ex_mem_wbcontrol_alusrc1 : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), ex_mem_wbcontrol_alusrc1) @[cpu.scala 93:27]
-    reg ex_mem_wbcontrol_jump : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), ex_mem_wbcontrol_jump) @[cpu.scala 93:27]
-    reg mem_wb_wbcontrol_immediate : UInt<1>, clock with :
-      reset => (UInt<1>("h0"), mem_wb_wbcontrol_immediate) @[cpu.scala 94:27]
-    reg mem_wb_wbcontrol_alusrc1 : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), mem_wb_wbcontrol_alusrc1) @[cpu.scala 94:27]
-    reg mem_wb_wbcontrol_jump : UInt<2>, clock with :
-      reset => (UInt<1>("h0"), mem_wb_wbcontrol_jump) @[cpu.scala 94:27]
-    node _T_8 = asUInt(reset) @[cpu.scala 109:9]
-    node _T_9 = eq(_T_8, UInt<1>("h0")) @[cpu.scala 109:9]
-    node _T_10 = asUInt(reset) @[cpu.scala 142:9]
-    node _T_11 = eq(_T_10, UInt<1>("h0")) @[cpu.scala 142:9]
-    node rs1 = bits(if_id_instruction, 19, 15) @[cpu.scala 148:30]
-    node rs2 = bits(if_id_instruction, 24, 20) @[cpu.scala 149:30]
-    node _T_12 = bits(if_id_instruction, 6, 0) @[cpu.scala 156:41]
-    node _T_13 = asUInt(reset) @[cpu.scala 173:9]
-    node _T_14 = eq(_T_13, UInt<1>("h0")) @[cpu.scala 173:9]
-    node _T_15 = asUInt(reset) @[cpu.scala 174:9]
-    node _T_16 = eq(_T_15, UInt<1>("h0")) @[cpu.scala 174:9]
-    node _T_17 = asUInt(reset) @[cpu.scala 205:9]
-    node _T_18 = eq(_T_17, UInt<1>("h0")) @[cpu.scala 205:9]
-    node _T_19 = asUInt(reset) @[cpu.scala 221:9]
-    node _T_20 = eq(_T_19, UInt<1>("h0")) @[cpu.scala 221:9]
-    node _T_21 = asUInt(reset) @[cpu.scala 233:9]
-    node _T_22 = eq(_T_21, UInt<1>("h0")) @[cpu.scala 233:9]
+      reset => (UInt<1>("h0"), ex_mem_mcontrol_memwrite) @[cpu.scala 102:27]
+    reg ex_mem_mcontrol_memread : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_mcontrol_memread) @[cpu.scala 102:27]
+    reg ex_mem_mcontrol_taken : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_mcontrol_taken) @[cpu.scala 102:27]
+    reg ex_mem_wbcontrol_toreg : UInt<2>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_wbcontrol_toreg) @[cpu.scala 102:27]
+    reg ex_mem_wbcontrol_regwrite : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), ex_mem_wbcontrol_regwrite) @[cpu.scala 102:27]
+    reg mem_wb_pcplusfour : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), mem_wb_pcplusfour) @[cpu.scala 103:27]
+    reg mem_wb_aluResult : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), mem_wb_aluResult) @[cpu.scala 103:27]
+    reg mem_wb_memReadData : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), mem_wb_memReadData) @[cpu.scala 103:27]
+    reg mem_wb_instruction : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), mem_wb_instruction) @[cpu.scala 103:27]
+    reg mem_wb_wbcontrol_toreg : UInt<2>, clock with :
+      reset => (UInt<1>("h0"), mem_wb_wbcontrol_toreg) @[cpu.scala 103:27]
+    reg mem_wb_wbcontrol_regwrite : UInt<1>, clock with :
+      reset => (UInt<1>("h0"), mem_wb_wbcontrol_regwrite) @[cpu.scala 103:27]
+    node _T_8 = asUInt(reset) @[cpu.scala 118:9]
+    node _T_9 = eq(_T_8, UInt<1>("h0")) @[cpu.scala 118:9]
+    node _T_10 = asUInt(reset) @[cpu.scala 151:9]
+    node _T_11 = eq(_T_10, UInt<1>("h0")) @[cpu.scala 151:9]
+    node rs1 = bits(if_id_instruction, 19, 15) @[cpu.scala 157:30]
+    node rs2 = bits(if_id_instruction, 24, 20) @[cpu.scala 158:30]
+    node _T_12 = bits(if_id_instruction, 6, 0) @[cpu.scala 165:41]
+    node _T_13 = bits(if_id_instruction, 31, 25) @[cpu.scala 179:36]
+    node _T_14 = bits(if_id_instruction, 14, 12) @[cpu.scala 180:36]
+    node _T_15 = asUInt(reset) @[cpu.scala 202:9]
+    node _T_16 = eq(_T_15, UInt<1>("h0")) @[cpu.scala 202:9]
+    node _T_17 = asUInt(reset) @[cpu.scala 203:9]
+    node _T_18 = eq(_T_17, UInt<1>("h0")) @[cpu.scala 203:9]
+    node _T_19 = eq(UInt<1>("h0"), id_ex_excontrol_alusrc1) @[Conditional.scala 37:30]
+    node _T_20 = eq(UInt<1>("h1"), id_ex_excontrol_alusrc1) @[Conditional.scala 37:30]
+    node _T_21 = eq(UInt<2>("h2"), id_ex_excontrol_alusrc1) @[Conditional.scala 37:30]
+    node _GEN_2 = validif(_T_21, id_ex_pc) @[Conditional.scala 39:67]
+    node _GEN_3 = mux(_T_20, UInt<1>("h0"), _GEN_2) @[Conditional.scala 39:67]
+    node _GEN_4 = mux(_T_19, id_ex_readdata1, _GEN_3) @[Conditional.scala 40:58]
+    node alu_inputy = mux(id_ex_excontrol_immediate, id_ex_sextimm, id_ex_readdata2) @[cpu.scala 233:23]
+    node _T_22 = eq(id_ex_excontrol_jump, UInt<2>("h2")) @[cpu.scala 266:53]
+    node _T_23 = or(branchCtrl.io_taken, _T_22) @[cpu.scala 266:29]
+    node _T_24 = eq(id_ex_excontrol_jump, UInt<2>("h3")) @[cpu.scala 268:37]
+    node _T_25 = mux(UInt<1>("h1"), UInt<31>("h7fffffff"), UInt<31>("h0")) @[Bitwise.scala 72:12]
+    node _T_26 = cat(_T_25, UInt<1>("h0")) @[Cat.scala 30:58]
+    node _T_27 = and(alu.io_result, _T_26) @[cpu.scala 269:38]
+    node _GEN_5 = mux(_T_24, _T_27, id_ex_pcplusfour) @[cpu.scala 268:46]
+    node _GEN_6 = mux(_T_23, branchAdd.io_result, _GEN_5) @[cpu.scala 266:62]
+    node _T_28 = asUInt(reset) @[cpu.scala 274:9]
+    node _T_29 = eq(_T_28, UInt<1>("h0")) @[cpu.scala 274:9]
+    node _T_30 = bits(ex_mem_funct3, 1, 0) @[cpu.scala 285:37]
+    node _T_31 = bits(ex_mem_funct3, 2, 2) @[cpu.scala 286:38]
+    node _T_32 = not(_T_31) @[cpu.scala 286:24]
+    node _T_33 = asUInt(reset) @[cpu.scala 304:9]
+    node _T_34 = eq(_T_33, UInt<1>("h0")) @[cpu.scala 304:9]
+    node _T_35 = eq(mem_wb_wbcontrol_toreg, UInt<1>("h1")) @[cpu.scala 311:32]
+    node _T_36 = eq(mem_wb_wbcontrol_toreg, UInt<2>("h2")) @[cpu.scala 313:39]
+    node _GEN_7 = mux(_T_36, mem_wb_pcplusfour, mem_wb_aluResult) @[cpu.scala 313:48]
+    node _GEN_8 = mux(_T_35, mem_wb_memReadData, _GEN_7) @[cpu.scala 311:41]
+    node _T_37 = bits(mem_wb_instruction, 11, 7) @[cpu.scala 320:47]
+    node _T_38 = neq(registers.io_writereg, UInt<1>("h0")) @[cpu.scala 321:81]
+    node _T_39 = and(mem_wb_wbcontrol_regwrite, _T_38) @[cpu.scala 321:55]
+    node _T_40 = asUInt(reset) @[cpu.scala 326:9]
+    node _T_41 = eq(_T_40, UInt<1>("h0")) @[cpu.scala 326:9]
     node _T = _GEN_1 @[Counter.scala 67:24]
-    node _T_4_instruction = UInt<32>("h0") @[cpu.scala 91:40 cpu.scala 91:40]
-    node _T_4_pc = UInt<32>("h0") @[cpu.scala 91:40 cpu.scala 91:40]
-    node _T_4_pcplusfour = UInt<32>("h0") @[cpu.scala 91:40 cpu.scala 91:40]
-    node _T_5_instruction = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_pc = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_pcplusfour = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_immediate = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_funct7 = UInt<7>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_funct3 = UInt<3>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_rs1 = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_rs2 = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_readreg1 = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_readreg2 = UInt<32>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_excontrol_add = UInt<1>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_excontrol_immediate = UInt<1>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_excontrol_alusrc1 = UInt<2>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_excontrol_branch = UInt<1>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_excontrol_jump = UInt<2>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_mcontrol_toreg = UInt<2>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_mcontrol_memwrite = UInt<1>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_mcontrol_regwrite = UInt<1>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_wbcontrol_immediate = UInt<1>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_wbcontrol_alusrc1 = UInt<2>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_5_wbcontrol_jump = UInt<2>("h0") @[cpu.scala 92:40 cpu.scala 92:40]
-    node _T_6_mcontrol_toreg = UInt<2>("h0") @[cpu.scala 93:40 cpu.scala 93:40]
-    node _T_6_mcontrol_memwrite = UInt<1>("h0") @[cpu.scala 93:40 cpu.scala 93:40]
-    node _T_6_mcontrol_regwrite = UInt<1>("h0") @[cpu.scala 93:40 cpu.scala 93:40]
-    node _T_6_wbcontrol_immediate = UInt<1>("h0") @[cpu.scala 93:40 cpu.scala 93:40]
-    node _T_6_wbcontrol_alusrc1 = UInt<2>("h0") @[cpu.scala 93:40 cpu.scala 93:40]
-    node _T_6_wbcontrol_jump = UInt<2>("h0") @[cpu.scala 93:40 cpu.scala 93:40]
-    node _T_7_wbcontrol_immediate = UInt<1>("h0") @[cpu.scala 94:40 cpu.scala 94:40]
-    node _T_7_wbcontrol_alusrc1 = UInt<2>("h0") @[cpu.scala 94:40 cpu.scala 94:40]
-    node _T_7_wbcontrol_jump = UInt<2>("h0") @[cpu.scala 94:40 cpu.scala 94:40]
-    node next_pc = validif(UInt<1>("h0"), UInt<32>("h0"))
-    node write_data = validif(UInt<1>("h0"), UInt<32>("h0"))
-    io_imem_address <= pc @[cpu.scala 130:19]
-    io_dmem_address is invalid
-    io_dmem_writedata is invalid
-    io_dmem_memread is invalid
-    io_dmem_memwrite is invalid
-    io_dmem_maskmode is invalid
-    io_dmem_sext is invalid
-    pc <= mux(reset, UInt<1>("h0"), pcPlusFour.io_result) @[cpu.scala 127:6]
+    node _T_4_instruction = UInt<32>("h0") @[cpu.scala 100:40 cpu.scala 100:40]
+    node _T_4_pc = UInt<32>("h0") @[cpu.scala 100:40 cpu.scala 100:40]
+    node _T_4_pcplusfour = UInt<32>("h0") @[cpu.scala 100:40 cpu.scala 100:40]
+    node _T_5_instruction = UInt<32>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_pc = UInt<32>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_pcplusfour = UInt<32>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_sextimm = UInt<32>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_funct7 = UInt<7>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_funct3 = UInt<3>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_readreg1 = UInt<5>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_readreg2 = UInt<5>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_readdata1 = UInt<32>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_readdata2 = UInt<32>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_excontrol_add = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_excontrol_immediate = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_excontrol_alusrc1 = UInt<2>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_excontrol_branch = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_excontrol_jump = UInt<2>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_mcontrol_memwrite = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_mcontrol_memread = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_mcontrol_taken = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_wbcontrol_toreg = UInt<2>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_5_wbcontrol_regwrite = UInt<1>("h0") @[cpu.scala 101:40 cpu.scala 101:40]
+    node _T_6_writedata = UInt<32>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_targetPc = UInt<32>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_pcplusfour = UInt<32>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_aluResult = UInt<32>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_instruction = UInt<32>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_funct3 = UInt<3>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_mcontrol_memwrite = UInt<1>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_mcontrol_memread = UInt<1>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_mcontrol_taken = UInt<1>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_wbcontrol_toreg = UInt<2>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_6_wbcontrol_regwrite = UInt<1>("h0") @[cpu.scala 102:40 cpu.scala 102:40]
+    node _T_7_pcplusfour = UInt<32>("h0") @[cpu.scala 103:40 cpu.scala 103:40]
+    node _T_7_aluResult = UInt<32>("h0") @[cpu.scala 103:40 cpu.scala 103:40]
+    node _T_7_memReadData = UInt<32>("h0") @[cpu.scala 103:40 cpu.scala 103:40]
+    node _T_7_instruction = UInt<32>("h0") @[cpu.scala 103:40 cpu.scala 103:40]
+    node _T_7_wbcontrol_toreg = UInt<2>("h0") @[cpu.scala 103:40 cpu.scala 103:40]
+    node _T_7_wbcontrol_regwrite = UInt<1>("h0") @[cpu.scala 103:40 cpu.scala 103:40]
+    node next_pc = ex_mem_targetPc @[cpu.scala 123:21 cpu.scala 289:11]
+    node write_data = _GEN_8 @[cpu.scala 127:24 cpu.scala 312:16 cpu.scala 314:16 cpu.scala 316:16]
+    node alu_inputx = _GEN_4 @[cpu.scala 222:24 cpu.scala 225:26 cpu.scala 226:26 cpu.scala 227:26]
+    io_imem_address <= pc @[cpu.scala 139:19]
+    io_dmem_address <= ex_mem_aluResult @[cpu.scala 281:21]
+    io_dmem_writedata <= ex_mem_writedata @[cpu.scala 282:21]
+    io_dmem_memread <= ex_mem_mcontrol_memread @[cpu.scala 283:21]
+    io_dmem_memwrite <= ex_mem_mcontrol_memwrite @[cpu.scala 284:21]
+    io_dmem_maskmode <= _T_30 @[cpu.scala 285:21]
+    io_dmem_sext <= _T_32 @[cpu.scala 286:21]
+    pc <= mux(reset, UInt<1>("h0"), pcPlusFour.io_result) @[cpu.scala 136:6]
     control.clock <= clock
     control.reset <= reset
-    control.io_opcode <= _T_12 @[cpu.scala 156:21]
+    control.io_opcode <= _T_12 @[cpu.scala 165:21]
     branchCtrl.clock <= clock
     branchCtrl.reset <= reset
-    branchCtrl.io_branch is invalid
-    branchCtrl.io_funct3 is invalid
-    branchCtrl.io_inputx is invalid
-    branchCtrl.io_inputy is invalid
+    branchCtrl.io_branch <= id_ex_excontrol_branch @[cpu.scala 238:24]
+    branchCtrl.io_funct3 <= id_ex_funct3 @[cpu.scala 239:24]
+    branchCtrl.io_inputx <= id_ex_readdata1 @[cpu.scala 240:24]
+    branchCtrl.io_inputy <= id_ex_readdata2 @[cpu.scala 241:24]
     registers.clock <= clock
     registers.reset <= reset
-    registers.io_readreg1 <= rs1 @[cpu.scala 159:25]
-    registers.io_readreg2 <= rs2 @[cpu.scala 160:25]
-    registers.io_writereg is invalid
-    registers.io_writedata is invalid
-    registers.io_wen is invalid
+    registers.io_readreg1 <= rs1 @[cpu.scala 168:25]
+    registers.io_readreg2 <= rs2 @[cpu.scala 169:25]
+    registers.io_writereg <= _T_37 @[cpu.scala 320:26]
+    registers.io_writedata <= write_data @[cpu.scala 322:26]
+    registers.io_wen <= _T_39 @[cpu.scala 321:26]
     aluControl.clock <= clock
     aluControl.reset <= reset
-    aluControl.io_add is invalid
-    aluControl.io_immediate is invalid
-    aluControl.io_funct7 is invalid
-    aluControl.io_funct3 is invalid
+    aluControl.io_add <= id_ex_excontrol_add @[cpu.scala 214:27]
+    aluControl.io_immediate <= id_ex_excontrol_immediate @[cpu.scala 215:27]
+    aluControl.io_funct7 <= id_ex_funct7 @[cpu.scala 216:27]
+    aluControl.io_funct3 <= id_ex_funct3 @[cpu.scala 217:27]
     alu.clock <= clock
     alu.reset <= reset
-    alu.io_operation <= aluControl.io_operation @[cpu.scala 197:20]
-    alu.io_inputx is invalid
-    alu.io_inputy is invalid
+    alu.io_operation <= aluControl.io_operation @[cpu.scala 244:20]
+    alu.io_inputx <= alu_inputx @[cpu.scala 234:17]
+    alu.io_inputy <= alu_inputy @[cpu.scala 235:17]
     immGen.clock <= clock
     immGen.reset <= reset
-    immGen.io_instruction <= if_id_instruction @[cpu.scala 163:25]
+    immGen.io_instruction <= if_id_instruction @[cpu.scala 172:25]
     pcPlusFour.clock <= clock
     pcPlusFour.reset <= reset
-    pcPlusFour.io_inputx <= pc @[cpu.scala 133:24]
-    pcPlusFour.io_inputy <= UInt<3>("h4") @[cpu.scala 134:24]
+    pcPlusFour.io_inputx <= pc @[cpu.scala 142:24]
+    pcPlusFour.io_inputy <= UInt<3>("h4") @[cpu.scala 143:24]
     branchAdd.clock <= clock
     branchAdd.reset <= reset
-    branchAdd.io_inputx is invalid
-    branchAdd.io_inputy is invalid
+    branchAdd.io_inputx <= id_ex_pc @[cpu.scala 247:23]
+    branchAdd.io_inputy <= id_ex_sextimm @[cpu.scala 248:23]
     forwarding.clock <= clock
     forwarding.reset <= reset
     forwarding.io_rs1 is invalid
@@ -826,52 +875,59 @@ circuit Top :
     forwarding.io_memwbrw is invalid
     hazard.clock <= clock
     hazard.reset <= reset
-    hazard.io_rs1 <= rs1 @[cpu.scala 152:17]
-    hazard.io_rs2 <= rs2 @[cpu.scala 153:17]
+    hazard.io_rs1 <= rs1 @[cpu.scala 161:17]
+    hazard.io_rs2 <= rs2 @[cpu.scala 162:17]
     hazard.io_idex_memread is invalid
     hazard.io_idex_rd is invalid
     hazard.io_exmem_taken is invalid
     value <= mux(reset, UInt<30>("h0"), _GEN_0) @[Counter.scala 39:13]
-    if_id_instruction <= mux(reset, _T_4_instruction, io_imem_instruction) @[cpu.scala 138:21]
-    if_id_pc <= mux(reset, _T_4_pc, pc) @[cpu.scala 139:21]
-    if_id_pcplusfour <= mux(reset, _T_4_pcplusfour, pcPlusFour.io_result) @[cpu.scala 140:21]
-    id_ex_instruction <= mux(reset, _T_5_instruction, id_ex_instruction)
-    id_ex_pc <= mux(reset, _T_5_pc, id_ex_pc)
-    id_ex_pcplusfour <= mux(reset, _T_5_pcplusfour, id_ex_pcplusfour)
-    id_ex_immediate <= mux(reset, _T_5_immediate, id_ex_immediate)
-    id_ex_funct7 <= mux(reset, _T_5_funct7, id_ex_funct7)
-    id_ex_funct3 <= mux(reset, _T_5_funct3, id_ex_funct3)
-    id_ex_rs1 <= mux(reset, _T_5_rs1, id_ex_rs1)
-    id_ex_rs2 <= mux(reset, _T_5_rs2, id_ex_rs2)
-    id_ex_readreg1 <= mux(reset, _T_5_readreg1, id_ex_readreg1)
-    id_ex_readreg2 <= mux(reset, _T_5_readreg2, id_ex_readreg2)
-    id_ex_excontrol_add <= mux(reset, _T_5_excontrol_add, id_ex_excontrol_add)
-    id_ex_excontrol_immediate <= mux(reset, _T_5_excontrol_immediate, id_ex_excontrol_immediate)
-    id_ex_excontrol_alusrc1 <= mux(reset, _T_5_excontrol_alusrc1, id_ex_excontrol_alusrc1)
-    id_ex_excontrol_branch <= mux(reset, _T_5_excontrol_branch, id_ex_excontrol_branch)
-    id_ex_excontrol_jump <= mux(reset, _T_5_excontrol_jump, id_ex_excontrol_jump)
-    id_ex_mcontrol_toreg <= mux(reset, _T_5_mcontrol_toreg, id_ex_mcontrol_toreg)
-    id_ex_mcontrol_memwrite <= mux(reset, _T_5_mcontrol_memwrite, id_ex_mcontrol_memwrite)
-    id_ex_mcontrol_regwrite <= mux(reset, _T_5_mcontrol_regwrite, id_ex_mcontrol_regwrite)
-    id_ex_wbcontrol_immediate <= mux(reset, _T_5_wbcontrol_immediate, id_ex_wbcontrol_immediate)
-    id_ex_wbcontrol_alusrc1 <= mux(reset, _T_5_wbcontrol_alusrc1, id_ex_wbcontrol_alusrc1)
-    id_ex_wbcontrol_jump <= mux(reset, _T_5_wbcontrol_jump, id_ex_wbcontrol_jump)
-    ex_mem_mcontrol_toreg <= mux(reset, _T_6_mcontrol_toreg, ex_mem_mcontrol_toreg)
-    ex_mem_mcontrol_memwrite <= mux(reset, _T_6_mcontrol_memwrite, ex_mem_mcontrol_memwrite)
-    ex_mem_mcontrol_regwrite <= mux(reset, _T_6_mcontrol_regwrite, ex_mem_mcontrol_regwrite)
-    ex_mem_wbcontrol_immediate <= mux(reset, _T_6_wbcontrol_immediate, ex_mem_wbcontrol_immediate)
-    ex_mem_wbcontrol_alusrc1 <= mux(reset, _T_6_wbcontrol_alusrc1, ex_mem_wbcontrol_alusrc1)
-    ex_mem_wbcontrol_jump <= mux(reset, _T_6_wbcontrol_jump, ex_mem_wbcontrol_jump)
-    mem_wb_wbcontrol_immediate <= mux(reset, _T_7_wbcontrol_immediate, mem_wb_wbcontrol_immediate)
-    mem_wb_wbcontrol_alusrc1 <= mux(reset, _T_7_wbcontrol_alusrc1, mem_wb_wbcontrol_alusrc1)
-    mem_wb_wbcontrol_jump <= mux(reset, _T_7_wbcontrol_jump, mem_wb_wbcontrol_jump)
-    printf(clock, and(and(UInt<1>("h1"), _T_9), UInt<1>("h1")), "Cycle=%d ", value) @[cpu.scala 109:9]
-    printf(clock, and(and(UInt<1>("h1"), _T_11), UInt<1>("h1")), "IF/ID: IFIDBundle(instruction -> %d, pc -> %d, pcplusfour -> %d)\n", if_id_instruction, if_id_pc, if_id_pcplusfour) @[cpu.scala 142:9]
-    printf(clock, and(and(UInt<1>("h1"), _T_14), UInt<1>("h1")), "DASM(%x)\n", if_id_instruction) @[cpu.scala 173:9]
-    printf(clock, and(and(UInt<1>("h1"), _T_16), UInt<1>("h1")), "ID/EX: IDEXBundle(instruction -> %d, pc -> %d, pcplusfour -> %d, immediate -> %d, funct7 -> %d, funct3 -> %d, rs1 -> %d, rs2 -> %d, readreg1 -> %d, readreg2 -> %d, excontrol -> EXControl(add -> %d, immediate -> %d, alusrc1 -> %d, branch -> %d, jump -> %d), mcontrol -> MControl(toreg -> %d, memwrite -> %d, regwrite -> %d), wbcontrol -> WBControl(immediate -> %d, alusrc1 -> %d, jump -> %d))\n", id_ex_instruction, id_ex_pc, id_ex_pcplusfour, id_ex_immediate, id_ex_funct7, id_ex_funct3, id_ex_rs1, id_ex_rs2, id_ex_readreg1, id_ex_readreg2, id_ex_excontrol_add, id_ex_excontrol_immediate, id_ex_excontrol_alusrc1, id_ex_excontrol_branch, id_ex_excontrol_jump, id_ex_mcontrol_toreg, id_ex_mcontrol_memwrite, id_ex_mcontrol_regwrite, id_ex_wbcontrol_immediate, id_ex_wbcontrol_alusrc1, id_ex_wbcontrol_jump) @[cpu.scala 174:9]
-    printf(clock, and(and(UInt<1>("h1"), _T_18), UInt<1>("h1")), "EX/MEM: EXMEMBundle(mcontrol -> MControl(toreg -> %d, memwrite -> %d, regwrite -> %d), wbcontrol -> WBControl(immediate -> %d, alusrc1 -> %d, jump -> %d))\n", ex_mem_mcontrol_toreg, ex_mem_mcontrol_memwrite, ex_mem_mcontrol_regwrite, ex_mem_wbcontrol_immediate, ex_mem_wbcontrol_alusrc1, ex_mem_wbcontrol_jump) @[cpu.scala 205:9]
-    printf(clock, and(and(UInt<1>("h1"), _T_20), UInt<1>("h1")), "MEM/WB: MEMWBBundle(wbcontrol -> WBControl(immediate -> %d, alusrc1 -> %d, jump -> %d))\n", mem_wb_wbcontrol_immediate, mem_wb_wbcontrol_alusrc1, mem_wb_wbcontrol_jump) @[cpu.scala 221:9]
-    printf(clock, and(and(UInt<1>("h1"), _T_22), UInt<1>("h1")), "---------------------------------------------\n") @[cpu.scala 233:9]
+    if_id_instruction <= mux(reset, _T_4_instruction, io_imem_instruction) @[cpu.scala 147:21]
+    if_id_pc <= mux(reset, _T_4_pc, pc) @[cpu.scala 148:21]
+    if_id_pcplusfour <= mux(reset, _T_4_pcplusfour, pcPlusFour.io_result) @[cpu.scala 149:21]
+    id_ex_instruction <= mux(reset, _T_5_instruction, if_id_instruction) @[cpu.scala 175:21]
+    id_ex_pc <= mux(reset, _T_5_pc, if_id_pc) @[cpu.scala 176:12]
+    id_ex_pcplusfour <= mux(reset, _T_5_pcplusfour, if_id_pcplusfour) @[cpu.scala 177:20]
+    id_ex_sextimm <= mux(reset, _T_5_sextimm, immGen.io_sextImm) @[cpu.scala 178:17]
+    id_ex_funct7 <= mux(reset, _T_5_funct7, _T_13) @[cpu.scala 179:16]
+    id_ex_funct3 <= mux(reset, _T_5_funct3, _T_14) @[cpu.scala 180:16]
+    id_ex_readreg1 <= mux(reset, _T_5_readreg1, rs1) @[cpu.scala 181:18]
+    id_ex_readreg2 <= mux(reset, _T_5_readreg2, rs2) @[cpu.scala 182:18]
+    id_ex_readdata1 <= mux(reset, _T_5_readdata1, registers.io_readdata1) @[cpu.scala 183:19]
+    id_ex_readdata2 <= mux(reset, _T_5_readdata2, registers.io_readdata2) @[cpu.scala 184:19]
+    id_ex_excontrol_add <= mux(reset, _T_5_excontrol_add, control.io_add) @[cpu.scala 187:23]
+    id_ex_excontrol_immediate <= mux(reset, _T_5_excontrol_immediate, control.io_immediate) @[cpu.scala 188:29]
+    id_ex_excontrol_alusrc1 <= mux(reset, _T_5_excontrol_alusrc1, control.io_alusrc1) @[cpu.scala 189:27]
+    id_ex_excontrol_branch <= mux(reset, _T_5_excontrol_branch, control.io_branch) @[cpu.scala 190:26]
+    id_ex_excontrol_jump <= mux(reset, _T_5_excontrol_jump, control.io_jump) @[cpu.scala 191:24]
+    id_ex_mcontrol_memwrite <= mux(reset, _T_5_mcontrol_memwrite, control.io_memwrite) @[cpu.scala 194:27]
+    id_ex_mcontrol_memread <= mux(reset, _T_5_mcontrol_memread, control.io_memread) @[cpu.scala 195:26]
+    id_ex_mcontrol_taken is invalid
+    id_ex_wbcontrol_toreg <= mux(reset, _T_5_wbcontrol_toreg, control.io_toreg) @[cpu.scala 199:25]
+    id_ex_wbcontrol_regwrite <= mux(reset, _T_5_wbcontrol_regwrite, control.io_regwrite) @[cpu.scala 200:28]
+    ex_mem_writedata <= mux(reset, _T_6_writedata, id_ex_readdata2) @[cpu.scala 251:20]
+    ex_mem_targetPc <= mux(reset, _T_6_targetPc, _GEN_6) @[cpu.scala 267:21 cpu.scala 269:21 cpu.scala 271:21]
+    ex_mem_pcplusfour <= mux(reset, _T_6_pcplusfour, id_ex_pcplusfour) @[cpu.scala 253:21]
+    ex_mem_aluResult <= mux(reset, _T_6_aluResult, alu.io_result) @[cpu.scala 254:20]
+    ex_mem_instruction <= mux(reset, _T_6_instruction, id_ex_instruction) @[cpu.scala 255:22]
+    ex_mem_funct3 <= mux(reset, _T_6_funct3, id_ex_funct3) @[cpu.scala 256:17]
+    ex_mem_mcontrol_memwrite <= mux(reset, _T_6_mcontrol_memwrite, id_ex_mcontrol_memwrite) @[cpu.scala 258:28]
+    ex_mem_mcontrol_memread <= mux(reset, _T_6_mcontrol_memread, id_ex_mcontrol_memread) @[cpu.scala 259:27]
+    ex_mem_mcontrol_taken <= mux(reset, _T_6_mcontrol_taken, branchCtrl.io_taken) @[cpu.scala 260:25]
+    ex_mem_wbcontrol_toreg <= mux(reset, _T_6_wbcontrol_toreg, id_ex_wbcontrol_toreg) @[cpu.scala 262:26]
+    ex_mem_wbcontrol_regwrite <= mux(reset, _T_6_wbcontrol_regwrite, id_ex_wbcontrol_regwrite) @[cpu.scala 263:29]
+    mem_wb_pcplusfour <= mux(reset, _T_7_pcplusfour, ex_mem_pcplusfour) @[cpu.scala 296:21]
+    mem_wb_aluResult <= mux(reset, _T_7_aluResult, ex_mem_aluResult) @[cpu.scala 297:20]
+    mem_wb_memReadData <= mux(reset, _T_7_memReadData, io_dmem_readdata) @[cpu.scala 298:22]
+    mem_wb_instruction <= mux(reset, _T_7_instruction, ex_mem_instruction) @[cpu.scala 299:22]
+    mem_wb_wbcontrol_toreg <= mux(reset, _T_7_wbcontrol_toreg, ex_mem_wbcontrol_toreg) @[cpu.scala 301:26]
+    mem_wb_wbcontrol_regwrite <= mux(reset, _T_7_wbcontrol_regwrite, ex_mem_wbcontrol_regwrite) @[cpu.scala 302:29]
+    printf(clock, and(and(UInt<1>("h1"), _T_9), UInt<1>("h1")), "Cycle=%d ", value) @[cpu.scala 118:9]
+    printf(clock, and(and(UInt<1>("h1"), _T_11), UInt<1>("h1")), "IF/ID: IFIDBundle(instruction -> %d, pc -> %d, pcplusfour -> %d)\n", if_id_instruction, if_id_pc, if_id_pcplusfour) @[cpu.scala 151:9]
+    printf(clock, and(and(UInt<1>("h1"), _T_16), UInt<1>("h1")), "DASM(%x)\n", if_id_instruction) @[cpu.scala 202:9]
+    printf(clock, and(and(UInt<1>("h1"), _T_18), UInt<1>("h1")), "ID/EX: IDEXBundle(instruction -> %d, pc -> %d, pcplusfour -> %d, sextimm -> %d, funct7 -> %d, funct3 -> %d, readreg1 -> %d, readreg2 -> %d, readdata1 -> %d, readdata2 -> %d, excontrol -> EXControl(add -> %d, immediate -> %d, alusrc1 -> %d, branch -> %d, jump -> %d), mcontrol -> MControl(memwrite -> %d, memread -> %d, taken -> %d), wbcontrol -> WBControl(toreg -> %d, regwrite -> %d))\n", id_ex_instruction, id_ex_pc, id_ex_pcplusfour, id_ex_sextimm, id_ex_funct7, id_ex_funct3, id_ex_readreg1, id_ex_readreg2, id_ex_readdata1, id_ex_readdata2, id_ex_excontrol_add, id_ex_excontrol_immediate, id_ex_excontrol_alusrc1, id_ex_excontrol_branch, id_ex_excontrol_jump, id_ex_mcontrol_memwrite, id_ex_mcontrol_memread, id_ex_mcontrol_taken, id_ex_wbcontrol_toreg, id_ex_wbcontrol_regwrite) @[cpu.scala 203:9]
+    printf(clock, and(and(UInt<1>("h1"), _T_29), UInt<1>("h1")), "EX/MEM: EXMEMBundle(writedata -> %d, targetPc -> %d, pcplusfour -> %d, aluResult -> %d, instruction -> %d, funct3 -> %d, mcontrol -> MControl(memwrite -> %d, memread -> %d, taken -> %d), wbcontrol -> WBControl(toreg -> %d, regwrite -> %d))\n", ex_mem_writedata, ex_mem_targetPc, ex_mem_pcplusfour, ex_mem_aluResult, ex_mem_instruction, ex_mem_funct3, ex_mem_mcontrol_memwrite, ex_mem_mcontrol_memread, ex_mem_mcontrol_taken, ex_mem_wbcontrol_toreg, ex_mem_wbcontrol_regwrite) @[cpu.scala 274:9]
+    printf(clock, and(and(UInt<1>("h1"), _T_34), UInt<1>("h1")), "MEM/WB: MEMWBBundle(pcplusfour -> %d, aluResult -> %d, memReadData -> %d, instruction -> %d, wbcontrol -> WBControl(toreg -> %d, regwrite -> %d))\n", mem_wb_pcplusfour, mem_wb_aluResult, mem_wb_memReadData, mem_wb_instruction, mem_wb_wbcontrol_toreg, mem_wb_wbcontrol_regwrite) @[cpu.scala 304:9]
+    printf(clock, and(and(UInt<1>("h1"), _T_41), UInt<1>("h1")), "---------------------------------------------\n") @[cpu.scala 326:9]
 
   module DualPortedMemory :
     input clock : Clock

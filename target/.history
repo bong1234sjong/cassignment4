@@ -1,3 +1,6 @@
 ls
 test
 Lab4 / testOnly dinocpu.RTypeTesterLab4
+Lab4 / testOnly dinocpu.ITypeTesterLab4
+Lab4 / testOnly dinocpu.UTypeTesterLab4
+Lab4 / testOnly dinocpu.MemoryTesterLab4
