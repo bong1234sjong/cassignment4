@@ -1,0 +1,10 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mApplicationsTesterLab4:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPipelined CPU[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should run application fibonacci *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  false was not true (Lab3Test.scala:108)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should run application naturalsum *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  false was not true (Lab3Test.scala:108)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should run application multiplier *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  false was not true (Lab3Test.scala:108)[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m- should run application divider *** FAILED ***[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[31m  false was not true (Lab3Test.scala:108)[0m[0m

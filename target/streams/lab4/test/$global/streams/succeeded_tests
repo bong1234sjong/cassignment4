@@ -1,8 +1,11 @@
 #Successful Tests
-#Sat Dec 20 15:36:59 GMT 2025
-dinocpu.ITypeTesterLab4=1766242203916
-dinocpu.RTypeMultiCycleTesterLab4=1766245019027
-dinocpu.ITypeMultiCycleTesterLab4=1766244570092
-dinocpu.RTypeTesterLab4=1766242190114
-dinocpu.MemoryTesterLab4=1766242225682
-dinocpu.UTypeTesterLab4=1766242213853
+#Sat Dec 20 18:29:41 GMT 2025
+dinocpu.ITypeTesterLab4=1766255309748
+dinocpu.RTypeMultiCycleTesterLab4=1766255340046
+dinocpu.ITypeMultiCycleTesterLab4=1766255331092
+dinocpu.RTypeTesterLab4=1766255298914
+dinocpu.MemoryMultiCycleTesterLab4=1766255372571
+dinocpu.MemoryTesterLab4=1766255327091
+dinocpu.BranchTesterLab4=1766255354152
+dinocpu.JumpTesterLab4=1766255362989
+dinocpu.UTypeTesterLab4=1766255319498

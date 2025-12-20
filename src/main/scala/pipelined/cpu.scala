@@ -133,7 +133,13 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
 
   // Note: This comes from the memory stage!
   // Only update the pc if the pcwrite flag is enabled
-  pc := pcPlusFour.io.result
+  when (hazard.io.pcwrite === 1.U) {
+    pc := next_pc
+  } .elsewhen (hazard.io.pcwrite === 2.U) {
+    pc := pc
+  } .otherwise {
+    pc := pcPlusFour.io.result
+  }
 
   // Send the PC to the instruction memory port to get the instruction
   io.imem.address := pc
@@ -144,9 +150,16 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
 
   // Fill the IF/ID register if we are not bubbling IF/ID
   // otherwise, leave the IF/ID register *unchanged*
-  if_id.instruction := io.imem.instruction
-  if_id.pc          := pc
-  if_id.pcplusfour  := pcPlusFour.io.result
+  when (hazard.io.pcwrite === 2.U) {
+  } .elsewhen (hazard.io.ifid_flush === true.B) {
+    if_id.instruction := 0.U
+    if_id.pc          := 0.U
+    if_id.pcplusfour  := 0.U
+  } .otherwise {
+    if_id.instruction := io.imem.instruction
+    if_id.pc          := pc
+    if_id.pcplusfour  := pcPlusFour.io.result
+  }
 
   printf(p"IF/ID: $if_id\n")
 
@@ -170,34 +183,51 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
 
   // Send the instruction to the immediate generator
   immGen.io.instruction := if_id.instruction
+  when (hazard.io.idex_bubble === true.B) {
+    // Set the execution control signals
+    id_ex.excontrol.add := 0.U
+    id_ex.excontrol.immediate := 0.U
+    id_ex.excontrol.alusrc1 := 0.U
+    id_ex.excontrol.branch := 0.U
+    id_ex.excontrol.jump := 0.U
 
-  // Fill the id_ex register
-  id_ex.instruction := if_id.instruction
-  id_ex.pc := if_id.pc
-  id_ex.pcplusfour := if_id.pcplusfour
-  id_ex.sextimm := immGen.io.sextImm
-  id_ex.funct7 := if_id.instruction(31,25)
-  id_ex.funct3 := if_id.instruction(14,12)
-  id_ex.readreg1 := rs1
-  id_ex.readreg2 := rs2
-  id_ex.readdata1 := registers.io.readdata1
-  id_ex.readdata2 := registers.io.readdata2
+    // Set the memory control signals
+    id_ex.mcontrol.memwrite := 0.U
+    id_ex.mcontrol.memread := 0.U
+    id_ex.mcontrol.taken := 0.U
 
-  // Set the execution control signals
-  id_ex.excontrol.add := control.io.add
-  id_ex.excontrol.immediate := control.io.immediate
-  id_ex.excontrol.alusrc1 := control.io.alusrc1
-  id_ex.excontrol.branch := control.io.branch
-  id_ex.excontrol.jump := control.io.jump
+    // Set the writeback control signals
+    id_ex.wbcontrol.toreg := 0.U
+    id_ex.wbcontrol.regwrite := 0.U
+  } .otherwise {
+    // Fill the id_ex register
+    id_ex.instruction := if_id.instruction
+    id_ex.pc := if_id.pc
+    id_ex.pcplusfour := if_id.pcplusfour
+    id_ex.sextimm := immGen.io.sextImm
+    id_ex.funct7 := if_id.instruction(31,25)
+    id_ex.funct3 := if_id.instruction(14,12)
+    id_ex.readreg1 := rs1
+    id_ex.readreg2 := rs2
+    id_ex.readdata1 := registers.io.readdata1
+    id_ex.readdata2 := registers.io.readdata2
 
-  // Set the memory control signals
-  id_ex.mcontrol.memwrite := control.io.memwrite
-  id_ex.mcontrol.memread := control.io.memread
-  id_ex.mcontrol.taken := DontCare
+    // Set the execution control signals
+    id_ex.excontrol.add := control.io.add
+    id_ex.excontrol.immediate := control.io.immediate
+    id_ex.excontrol.alusrc1 := control.io.alusrc1
+    id_ex.excontrol.branch := control.io.branch
+    id_ex.excontrol.jump := control.io.jump
 
-  // Set the writeback control signals
-  id_ex.wbcontrol.toreg := control.io.toreg
-  id_ex.wbcontrol.regwrite := control.io.regwrite
+    // Set the memory control signals
+    id_ex.mcontrol.memwrite := control.io.memwrite
+    id_ex.mcontrol.memread := control.io.memread
+    id_ex.mcontrol.taken := DontCare
+
+    // Set the writeback control signals
+    id_ex.wbcontrol.toreg := control.io.toreg
+    id_ex.wbcontrol.regwrite := control.io.regwrite
+  }
 
   printf("DASM(%x)\n", if_id.instruction)
   printf(p"ID/EX: $id_ex\n")
@@ -207,6 +237,8 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   /////////////////////////////////////////////////////////////////////////////
 
   // Set the inputs to the hazard detection unit from this stage (SKIP FOR PART I)
+  hazard.io.idex_memread := id_ex.mcontrol.memread
+  hazard.io.idex_rd      := id_ex.instruction(11,7)
 
   // Set the input to the forwarding unit from this stage (SKIP FOR PART I)
   forwarding.io.rs1 := id_ex.readreg1
@@ -265,30 +297,41 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   branchAdd.io.inputx := id_ex.pc
   branchAdd.io.inputy := id_ex.sextimm
 
-  // Set the EX/MEM register values
-  ex_mem.writedata := id_ex.readdata2
-  ex_mem.targetPc  := DontCare
-  ex_mem.pcplusfour := id_ex.pcplusfour
-  ex_mem.aluResult := alu.io.result
-  ex_mem.instruction := id_ex.instruction
-  ex_mem.funct3 := id_ex.funct3
+  when (hazard.io.exmem_bubble === true.B){
+    ex_mem.mcontrol.memwrite := 0.U
+    ex_mem.mcontrol.memread := 0.U
+    ex_mem.mcontrol.taken := 0.U
 
-  ex_mem.mcontrol.memwrite := id_ex.mcontrol.memwrite
-  ex_mem.mcontrol.memread := id_ex.mcontrol.memread
-  ex_mem.mcontrol.taken := branchCtrl.io.taken
-
-  ex_mem.wbcontrol.toreg := id_ex.wbcontrol.toreg
-  ex_mem.wbcontrol.regwrite := id_ex.wbcontrol.regwrite
-
-  // Calculate whether which PC we should use and set the taken flag (line 92 in single-cycle/cpu.scala)
-  when (branchCtrl.io.taken || id_ex.excontrol.jump === 2.U) {
-    ex_mem.targetPc := branchAdd.io.result
-  } .elsewhen (id_ex.excontrol.jump === 3.U) {
-    ex_mem.targetPc := alu.io.result & Cat(Fill(31, 1.U), 0.U)
+    ex_mem.wbcontrol.toreg := 0.U
+    ex_mem.wbcontrol.regwrite := 0.U
+    ex_mem.targetPc := 0.U
   } .otherwise {
-    ex_mem.targetPc := id_ex.pcplusfour
-  }
+    // Set the EX/MEM register values
+    ex_mem.writedata := id_ex.readdata2
+    ex_mem.targetPc  := DontCare
+    ex_mem.pcplusfour := id_ex.pcplusfour
+    ex_mem.aluResult := alu.io.result
+    ex_mem.instruction := id_ex.instruction
+    ex_mem.funct3 := id_ex.funct3
 
+    ex_mem.mcontrol.memwrite := id_ex.mcontrol.memwrite
+    ex_mem.mcontrol.memread := id_ex.mcontrol.memread
+
+    ex_mem.wbcontrol.toreg := id_ex.wbcontrol.toreg
+    ex_mem.wbcontrol.regwrite := id_ex.wbcontrol.regwrite
+
+    // Calculate whether which PC we should use and set the taken flag (line 92 in single-cycle/cpu.scala)
+    when (branchCtrl.io.taken || id_ex.excontrol.jump === 2.U) {
+      ex_mem.targetPc := branchAdd.io.result
+      ex_mem.mcontrol.taken := true.B
+    } .elsewhen (id_ex.excontrol.jump === 3.U) {
+      ex_mem.targetPc := alu.io.result & Cat(Fill(31, 1.U), 0.U)
+      ex_mem.mcontrol.taken := true.B
+    } .otherwise {
+      ex_mem.targetPc := id_ex.pcplusfour
+      ex_mem.mcontrol.taken := false.B
+    }
+  }
   printf(p"EX/MEM: $ex_mem\n")
 
   /////////////////////////////////////////////////////////////////////////////
@@ -307,6 +350,7 @@ class PipelinedCPU(implicit val conf: CPUConfig) extends Module {
   next_pc := ex_mem.targetPc
 
   // Send input signals to the hazard detection unit (SKIP FOR PART I)
+  hazard.io.exmem_taken  := ex_mem.mcontrol.taken
 
   // Send input signals to the forwarding unit (SKIP FOR PART I)
   forwarding.io.exmemrw := ex_mem.wbcontrol.regwrite
