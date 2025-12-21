@@ -1,0 +1,4 @@
+[0m[[0m[0minfo[0m] [0m[0m[32mJumpTesterLab4:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPipelined CPU[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should run jump instruction jal[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should run jump instruction jalr0[0m[0m

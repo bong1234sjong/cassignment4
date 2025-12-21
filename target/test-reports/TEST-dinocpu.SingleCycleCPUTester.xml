@@ -1,158 +1,158 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<testsuite hostname="dinocpu" name="dinocpu.SingleCycleCPUTester" tests="75" errors="0" failures="0" skipped="0" time="18.994" timestamp="2025-12-20T18:52:12">
+<testsuite hostname="dinocpu" name="dinocpu.SingleCycleCPUTester" tests="75" errors="0" failures="0" skipped="0" time="27.844" timestamp="2025-12-21T03:55:15">
                      <properties>
       <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/><property name="java.specification.version" value="11"/><property name="sun.cpu.isalist" value=""/><property name="sun.jnu.encoding" value="ANSI_X3.4-1968"/><property name="sun.arch.data.model" value="64"/><property name="java.vendor.url" value="https://ubuntu.com/"/><property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-arm64/lib"/><property name="sun.java.command" value="/root/.cache/sbt/boot/sbt-launch/1.11.7/sbt-launch-1.11.7.jar"/><property name="jdk.debug" value="release"/><property name="java.specification.vendor" value="Oracle Corporation"/><property name="java.version.date" value="2025-07-15"/><property name="java.home" value="/usr/lib/jvm/java-11-openjdk-arm64"/><property name="file.separator" value="/"/><property name="java.vm.compressedOopsMode" value="32-bit"/><property name="line.separator" value="
 "/><property name="java.specification.name" value="Java Platform API Specification"/><property name="java.vm.specification.vendor" value="Oracle Corporation"/><property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/><property name="java.runtime.version" value="11.0.28+6-post-Ubuntu-1ubuntu122.04.1"/><property name="user.name" value="root"/><property name="file.encoding" value="UTF-8"/><property name="jnidispatch.path" value="/tmp/jna-3506402/jna15875030366704407077.tmp"/><property name="jna.loaded" value="true"/><property name="java.io.tmpdir" value="/tmp"/><property name="java.version" value="11.0.28"/><property name="java.vm.specification.name" value="Java Virtual Machine Specification"/><property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/><property name="sun.os.patch.level" value="unknown"/><property name="java.library.path" value="/usr/java/packages/lib:/usr/lib/aarch64-linux-gnu/jni:/lib/aarch64-linux-gnu:/usr/lib/aarch64-linux-gnu:/usr/lib/jni:/lib:/usr/lib"/><property name="java.vendor" value="Ubuntu"/><property name="java.specification.maintenance.version" value="3"/><property name="scala.ext.dirs" value="/root/.sbt/1.0/java9-rt-ext-ubuntu_11_0_28"/><property name="sun.io.unicode.encoding" value="UnicodeLittle"/><property name="java.class.path" value="/root/.cache/sbt/boot/sbt-launch/1.11.7/sbt-launch-1.11.7.jar"/><property name="java.vm.vendor" value="Ubuntu"/><property name="jline.shutdownhook" value="false"/><property name="user.timezone" value="GMT"/><property name="os.name" value="Linux"/><property name="java.vm.specification.version" value="11"/><property name="sun.java.launcher" value="SUN_STANDARD"/><property name="user.country" value="US"/><property name="sun.cpu.endian" value="little"/><property name="user.home" value="/root"/><property name="user.language" value="en"/><property name="sbt.script" value="/usr/bin/sbt"/><property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/><property name="jline.esc.timeout" value="0"/><property name="path.separator" value=":"/><property name="os.version" value="6.11.11-linuxkit"/><property name="jna.nosys" value="true"/><property name="java.runtime.name" value="OpenJDK Runtime Environment"/><property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/><property name="jna.platform.library.path" value="/usr/lib/aarch64-linux-gnu:/lib/aarch64-linux-gnu:/usr/lib:/lib"/><property name="java.vendor.url.bug" value="https://bugs.launchpad.net/ubuntu/+source/openjdk-lts"/><property name="user.dir" value="/home/dinocpu"/><property name="os.arch" value="aarch64"/><property name="java.vm.info" value="mixed mode"/><property name="java.vm.version" value="11.0.28+6-post-Ubuntu-1ubuntu122.04.1"/><property name="java.class.version" value="55.0"/>
     </properties>
-                     <testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype add1" time="0.442">
+                     <testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype add1" time="2.621">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype add2" time="0.436">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype add2" time="0.819">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype add0" time="0.507">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype add0" time="0.558">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype or" time="0.459">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype or" time="0.939">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sub" time="0.345">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sub" time="0.743">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype and" time="0.394">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype and" time="0.62">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype xor" time="0.385">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype xor" time="0.667">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype slt" time="0.395">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype slt" time="0.559">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype slt1" time="0.357">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype slt1" time="0.6">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sltu" time="0.405">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sltu" time="0.52">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sltu1" time="0.349">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sltu1" time="0.37">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sll" time="0.388">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sll" time="0.398">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype srl" time="0.336">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype srl" time="0.433">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sra" time="0.423">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtype sra" time="0.383">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications fibonacci" time="0.388">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications fibonacci" time="0.36">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications naturalsum" time="0.378">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications naturalsum" time="0.375">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications multiplier" time="0.653">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications multiplier" time="0.855">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications divider" time="0.532">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run applications divider" time="0.902">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run jump jal" time="0.265">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run jump jal" time="0.374">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run jump jalr0" time="0.213">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run jump jalr0" time="0.363">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run jump jalr1" time="0.252">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run jump jalr1" time="0.375">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch beq-False" time="0.209">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch beq-False" time="0.386">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch beq-True" time="0.185">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch beq-True" time="0.521">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bne-False" time="0.21">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bne-False" time="0.334">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bne-True" time="0.193">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bne-True" time="0.448">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-False" time="0.252">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-False" time="0.443">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-False-equal" time="0.203">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-False-equal" time="0.388">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-True" time="0.178">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-True" time="0.375">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-False-signed" time="0.189">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-False-signed" time="0.398">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-True-signed" time="0.192">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch blt-True-signed" time="0.328">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-False" time="0.225">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-False" time="0.419">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-True" time="0.205">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-True" time="0.341">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-False-signed" time="0.201">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-False-signed" time="0.336">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-True-signed" time="0.194">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-True-signed" time="0.324">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-True-equal" time="0.195">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bge-True-equal" time="0.341">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bltu-False" time="0.202">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bltu-False" time="0.334">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bltu-True" time="0.198">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bltu-True" time="0.342">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bgeu-False" time="0.194">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bgeu-False" time="0.264">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bgeu-True" time="0.22">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run branch bgeu-True" time="0.281">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itypeMultiCycle addi2" time="0.193">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itypeMultiCycle addi2" time="0.249">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memoryMultiCycle lwfwd" time="0.198">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memoryMultiCycle lwfwd" time="0.27">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype addi1" time="0.198">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype addi1" time="0.299">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype slli" time="0.238">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype slli" time="0.216">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype srai" time="0.236">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype srai" time="0.211">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype srai-negative" time="0.198">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype srai-negative" time="0.231">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype srli" time="0.241">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype srli" time="0.193">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype andi" time="0.201">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype andi" time="0.205">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype ori" time="0.19">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype ori" time="0.198">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype xori" time="0.233">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype xori" time="0.197">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype slti" time="0.176">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype slti" time="0.191">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype sltiu" time="0.211">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run itype sltiu" time="0.19">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc0" time="0.171">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc0" time="0.184">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc1" time="0.199">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc1" time="0.205">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc2" time="0.166">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc2" time="0.187">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc3" time="0.176">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype auipc3" time="0.19">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype lui0" time="0.226">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype lui0" time="0.194">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype lui1" time="0.181">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run utype lui1" time="0.192">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle addfwd" time="0.23">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle addfwd" time="0.213">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle swapxor" time="0.192">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle swapxor" time="0.206">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle power2-512" time="0.187">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle power2-512" time="0.189">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle power2-1234" time="0.181">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle power2-1234" time="0.192">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle power2--65536" time="0.179">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle power2--65536" time="0.187">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle oppsign-true" time="0.186">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle oppsign-true" time="0.214">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle oppsign-false" time="0.176">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle oppsign-false" time="0.193">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle rotR" time="0.185">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run rtypeMultiCycle rotR" time="0.198">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lw1" time="0.187">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lw1" time="0.192">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lb" time="0.194">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lb" time="0.193">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lh" time="0.213">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lh" time="0.202">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lbu" time="0.259">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lbu" time="0.205">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lhu" time="0.202">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lhu" time="0.186">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lb1" time="0.179">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lb1" time="0.191">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lh1" time="0.162">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory lh1" time="0.188">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory sw" time="0.178">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory sw" time="0.224">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory sb" time="0.161">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory sb" time="0.228">
                                                  
-                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory sh" time="0.164">
+                                               </testcase><testcase classname="dinocpu.SingleCycleCPUTester" name="Single Cycle CPU should run memory sh" time="0.204">
                                                  
                                                </testcase>
                      <system-out><![CDATA[]]></system-out>
